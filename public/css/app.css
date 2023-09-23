@@ -438,6 +438,7 @@ main.show div article.info-race {
 main.show div article.info-gender {
     background: url(../imagenes/info-gender.svg) no-repeat center;
 }
+
 main.show div article p {
     position: absolute;
     top: 2px;

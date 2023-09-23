@@ -38,18 +38,16 @@ class ViewsController extends Controller
 
     public function administrador()
     {
-        $mascotas = Mascota::paginate(20);
+        $mascotas = Mascota::paginate(100);
         
-        return view('viewsAdmin/actionsPets' , compact('mascotas'));
-    }
+        // condicional de vuelta
 
-    public function ver()
-    {
-        return view('viewsAdmin/ver');
+        return view('viewsAdmin/actionsPets' , compact('mascotas'));
     }
 
     public function agg()
     {
+        // Creamos variables para asignar, pasar y ver los datos que se encuentran en las tablas razas, categorias y razas
         $razas = Raza::paginate(20);
         $categorias = Categoria::paginate(20);
         $generos = Genero::paginate(20);
@@ -57,13 +55,34 @@ class ViewsController extends Controller
         return view('viewsAdmin/agregar', compact('razas', 'categorias', 'generos'));
     }
 
-    public function editar()
+    public function ver($id)
     {
-        return view('viewsAdmin/editar');
+        $mascota = Mascota::find($id);
+
+        return view('viewsAdmin/ver', compact('mascota'));
     }
 
-    public function eliminar()
+
+    public function editar($id)
     {
-        return "eliminar";
+        $razas = Raza::paginate(20);
+        $categorias = Categoria::paginate(20);
+        $generos = Genero::paginate(20);
+
+        $mascota = Mascota::find($id);
+
+        return view('viewsAdmin/editar', compact('razas', 'categorias', 'generos','mascota'));
+    }
+
+    public function eliminar($id)
+    {
+        $mascota = Mascota::find($id);
+
+        $mascota->delete();
+
+        $mascotas = Mascota::paginate(100);
+        
+        return view('viewsAdmin/actionsPets' , compact('mascotas'));
+
     }
 }

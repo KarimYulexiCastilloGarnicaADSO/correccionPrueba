@@ -21,11 +21,12 @@
                         <div class="info">
                             <h3>{{ $mascota->nombre }}</h3>
                             <h4>{{ $mascota->raza->nombre }}</h4>
+                            <h4>{{ $mascota->id }}</h4>
                         </div>
                         <div class="controls">
-                            <a href="{{ route('ver')}}" class="show"></a>
-                            <a href="{{ route('editar')}}" class="edit"></a>
-                            <a href="{{ route('eliminar')}}" class="delete"></a>
+                            <a href="{{ route('ver', $mascota->id) }}" class="show"></a>
+                            <a href="{{ route('editar', $mascota->id) }}" class="edit"></a>
+                            <a href="{{ route('eliminar', $mascota->id) }}" class="delete"></a>
                         </div>
                     </td>
                 </tr>

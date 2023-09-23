@@ -15,7 +15,7 @@
     <div class="imagen"><img src="{{asset ('imagenes/slide1.png')}}" alt="#"></div>
     <div class="flecha"><img src="{{asset('imagenes/chevron-right.svg')}}" alt="#" ></div>
 
-    <p>Usuarios:</p>
+    {{-- <p>Usuarios:</p>
 
     @foreach ($users as $user)
         <li>{{ $user->name }}</li>
@@ -27,7 +27,7 @@
 
     @foreach ($mascotas as $mascota)
         <li>{{ $mascota->nombre }} - {{ $mascota->raza_id }} - {{ $mascota->categoria_id }} - {{ $mascota->photo }} - {{ $mascota->genero_id }} </li>
-    @endforeach
+    @endforeach --}}
 
 </div>
 @endsection

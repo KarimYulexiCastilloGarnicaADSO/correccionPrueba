@@ -8,34 +8,51 @@
             <a href="{{ route('administrador')}}" class="back"></a>
             <a href="{{ route('home')}}" class="close"></a>
         </header>
+
         <figure class="photo-preview">
             <img src="{{ asset('imagenes/photo-lg-1.svg')}}" alt="">
         </figure>
-        <form action="" method="post">
-            <input type="text" name="name" placeholder="Nombre" value="Reigner">
+
+        <form action="{{ route('valEditar', $mascota->id) }}" method="POST">
+
+            @csrf
+
+            <input type="text" name="nombre" placeholder="Nombre" value="{{ $mascota->nombre }}">
+
             <div class="select">
-                <select name="raza">
-                    <option value="">Seleccione Raza...</option>
-                    <option value="1">Corgi</option>
-                    <option value="2" selected>Bulldog</option>
+                <select name="raza_id">
+                    <option value="{{ $mascota->raza->id }}"> <strong>{{ $mascota->raza->nombre }}</strong> </option>
+
+                    @foreach ($razas as $raza)
+                        <option value="{{ $raza->id }}">{{ $raza->nombre }}</option>
+                    @endforeach
                 </select>
             </div>
+
             <div class="select">
-                <select name="raza">
-                    <option value="">Seleccione Categoría...</option>
-                    <option value="1" selected>Perro</option>
-                    <option value="2">Gato</option>
+                <select name="categoria_id">
+                    <option value="{{ $mascota->categoria->id }}">{{ $mascota->categoria->nombre }}</option>
+
+                    @foreach ($categorias as $categoria)
+                        <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                    @endforeach
                 </select>
             </div>
-            <button type="button" class="upload">Subir Foto</button>
+
+            <input type="text" name="photo" placeholder="Foto" value="{{ $mascota->photo }}">
+            {{-- <button type="button" class="upload">Subir Foto</button> --}}
+
             <div class="select">
-                <select name="raza">
-                    <option value="">Seleccione Genero...</option>
-                    <option value="1">Hembra</option>
-                    <option value="2" selected>Macho</option>
+                <select name="genero_id">
+                    <option value="{{ $mascota->genero->id }}">{{ $mascota->genero->nombre }}</option>
+                    
+                    @foreach ($generos as $genero)
+                        <option value="{{ $genero->id }}">{{ $genero->nombre }}</option>
+                    @endforeach
                 </select>
             </div>
-            <button class="update">Modificar</button>
+
+            <button type="submit" class="update">Modificar</button>
         </form>
     </main>
 

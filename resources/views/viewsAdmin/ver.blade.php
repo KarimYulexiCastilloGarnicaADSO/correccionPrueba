@@ -8,14 +8,17 @@
             <a href="{{ route('administrador')}}" class="back"></a>
             <a href="{{ route('home')}}" class="close"></a>
         </header>
+
         <figure class="photo-preview">
             <img src="{{ asset('imagenes/photo-lg-1.svg')}}" alt="">
         </figure>
+
         <div>
-            <article class="info-name"><p>Reigner</p></article>
-            <article class="info-race"><p>Bulldog</p></article>
-            <article class="info-category"><p>Perro</p></article>
-            <article class="info-gender"><p>Macho</p></article>
+            <article class="info-name"><p> {{ $mascota->nombre }} </p></article>
+            <article class="info-race"><p> {{ $mascota->raza->nombre }} </p></article>
+            <article class="info-category"><p> {{ $mascota->categoria->nombre }} </p></article>
+            <article class="info-gender"><p> {{ $mascota->genero->nombre }} </p></article>
+            <p class="text-white text-center"> {{ $mascota->id }} <p> 
         </div>
     </main>
 
